@@ -1,16 +1,16 @@
 {
     "key": {
-        "name": "aws",
-        "path": "/home/user/.ssh/aws.pem"
+        "name": "helloaws",
+        "path": "/home/user/.ssh/aws"
     },
     "port": 5000,
     "repo": {
-        "name": "narwhal",
-        "url": "https://github.com/asonnino/narwhal",
+        "name": "audit_test",
+        "url": "https://github.com/woochang2/audit_test.git",
         "branch": "master"
     },
     "instances": {
         "type": "m5d.xlarge",
-        "regions": ["us-east-1", "ap-northeast-2", "ca-central-1", "eu-central-1"]
+        "regions": ["ap-northeast-2"]
     }
 }

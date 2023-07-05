@@ -14,20 +14,20 @@ def local(ctx, debug=True):
     ''' Run benchmarks on localhost '''
     bench_params = {
         'faults': 0,
-        'nodes': 4,
+        'nodes': 16,
         'workers': 1,
-        'rate': 5_000,
-        'tx_size': 512,
-        'duration': 20,
+        'rate': 30_000,
+        'tx_size': 1_024,
+        'duration': 60,
     }
     node_params = {
         'header_size': 1_000,  # bytes
-        'max_header_delay': 200,  # ms
+        'max_header_delay': 50,  # ms
         'gc_depth': 50,  # rounds
         'sync_retry_delay': 10_000,  # ms
         'sync_retry_nodes': 3,  # number of nodes
-        'batch_size': 51_200,  # bytes
-        'max_batch_delay': 200  # ms
+        'batch_size': 102_400,  # bytes
+        'max_batch_delay': 50  # ms
     }
     try:
         ret = LocalBench(bench_params, node_params).run(debug)
@@ -37,7 +37,7 @@ def local(ctx, debug=True):
 
 
 @task
-def create(ctx, nodes=2):
+def create(ctx, nodes=4):
     ''' Create a testbed'''
     try:
         InstanceManager.make().create_instances(nodes)
@@ -94,14 +94,14 @@ def install(ctx):
 def remote(ctx, debug=False):
     ''' Run benchmarks on AWS '''
     bench_params = {
-        'faults': 3,
-        'nodes': [10],
+        'faults': 0,
+        'nodes': 4,
         'workers': 1,
         'collocate': True,
-        'rate': [10_000, 110_000],
-        'tx_size': 512,
-        'duration': 300,
-        'runs': 2,
+        'rate': 10_000,
+        'tx_size': 2_048,
+        'duration': 60,
+        'runs': 1,
     }
     node_params = {
         'header_size': 1_000,  # bytes
@@ -109,7 +109,7 @@ def remote(ctx, debug=False):
         'gc_depth': 50,  # rounds
         'sync_retry_delay': 10_000,  # ms
         'sync_retry_nodes': 3,  # number of nodes
-        'batch_size': 500_000,  # bytes
+        'batch_size': 204_800,  # bytes
         'max_batch_delay': 200  # ms
     }
     try:

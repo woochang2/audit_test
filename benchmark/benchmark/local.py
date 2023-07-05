@@ -73,7 +73,24 @@ class LocalBench:
 
             self.node_parameters.print(PathMaker.parameters_file())
 
+            # Only one worker works as BSP
+            # Run the only one BSP
+            workers_addresses = committee.workers_addresses(self.faults)
+            rate_share = rate
+            bsp_address = workers_addresses[0]
+            print(bsp_address)
+            cmd = CommandMaker.run_client(
+                        bsp_address[0][1],
+                        self.tx_size,
+                        rate_share,
+                        [x for y in workers_addresses for _, x in y]
+                    )
+            log_file = PathMaker.client_log_file(0, bsp_address[0][0])
+            self._background_run(cmd, log_file)
+            
             # Run the clients (they will wait for the nodes to be ready).
+            
+            """
             workers_addresses = committee.workers_addresses(self.faults)
             rate_share = ceil(rate / committee.workers())
             for i, addresses in enumerate(workers_addresses):
@@ -86,6 +103,7 @@ class LocalBench:
                     )
                     log_file = PathMaker.client_log_file(i, id)
                     self._background_run(cmd, log_file)
+            """        
 
             # Run the primaries (except the faulty ones).
             for i, address in enumerate(committee.primary_addresses(self.faults)):
