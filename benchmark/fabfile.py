@@ -15,9 +15,9 @@ def local(ctx, debug=True):
     bench_params = {
         'faults': 0,
         'nodes': 16,
-        'workers': 1,
-        'rate': 30_000,
-        'tx_size': 1_024,
+        'workers': 4,
+        'rate': 50_000,
+        'tx_size': 2_822,
         'duration': 60,
     }
     node_params = {
@@ -26,7 +26,7 @@ def local(ctx, debug=True):
         'gc_depth': 50,  # rounds
         'sync_retry_delay': 10_000,  # ms
         'sync_retry_nodes': 3,  # number of nodes
-        'batch_size': 102_400,  # bytes
+        'batch_size': 282_200,  # bytes
         'max_batch_delay': 50  # ms
     }
     try:
@@ -98,8 +98,8 @@ def remote(ctx, debug=False):
         'nodes': 4,
         'workers': 1,
         'collocate': True,
-        'rate': 10_000,
-        'tx_size': 2_048,
+        'rate': 5_000,
+        'tx_size': 2_822,
         'duration': 60,
         'runs': 1,
     }
@@ -109,7 +109,7 @@ def remote(ctx, debug=False):
         'gc_depth': 50,  # rounds
         'sync_retry_delay': 10_000,  # ms
         'sync_retry_nodes': 3,  # number of nodes
-        'batch_size': 204_800,  # bytes
+        'batch_size': 282_200,  # bytes
         'max_batch_delay': 200  # ms
     }
     try:

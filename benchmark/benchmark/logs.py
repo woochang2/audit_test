@@ -27,8 +27,11 @@ class LogParser:
         else:
             self.committee_size = '?'
             self.workers = '?'
+        
+        
 
         # Parse the clients logs.
+        
         try:
             with Pool() as p:
                 results = p.map(self._parse_clients, clients)

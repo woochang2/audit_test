@@ -75,6 +75,7 @@ class LocalBench:
 
             # Only one worker works as BSP
             # Run the only one BSP
+            
             workers_addresses = committee.workers_addresses(self.faults)
             rate_share = rate
             bsp_address = workers_addresses[0]
@@ -103,7 +104,7 @@ class LocalBench:
                     )
                     log_file = PathMaker.client_log_file(i, id)
                     self._background_run(cmd, log_file)
-            """        
+            """
 
             # Run the primaries (except the faulty ones).
             for i, address in enumerate(committee.primary_addresses(self.faults)):

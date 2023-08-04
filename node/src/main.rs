@@ -84,7 +84,6 @@ async fn run(matches: &ArgMatches<'_>) -> Result<()> {
         }
         None => Parameters::default(),
     };
-
     // Make the data store.
     let store = Store::new(store_path).context("Failed to create a store")?;
 
@@ -139,3 +138,12 @@ async fn analyze(mut rx_output: Receiver<Certificate>) {
         // NOTE: Here goes the application logic.
     }
 }
+
+/* 
+// Receives a batch corresponding to the consensus output
+async fn analyze2(mut rx_batch: Receiver<SerializedBatchMessage>) {
+    while let Some(_batch) = rx_batch.recv().await {
+        // NOTE: Here goes the application logic.
+    }
+}
+*/

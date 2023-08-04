@@ -11,6 +11,9 @@ use std::convert::TryInto;
 use std::fmt;
 
 #[derive(Clone, Serialize, Deserialize, Default)]
+
+// I do not define externally defined Block here
+// Just use header as the block
 pub struct Header {
     pub author: PublicKey,
     pub round: Round,

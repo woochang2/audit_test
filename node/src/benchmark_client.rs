@@ -106,7 +106,6 @@ impl Client {
         let mut transport = Framed::new(stream, LengthDelimitedCodec::new());
         let interval = interval(Duration::from_millis(BURST_DURATION));
         tokio::pin!(interval);
-
         // NOTE: This log entry is used to compute performance.
         info!("Start sending transactions");
 
