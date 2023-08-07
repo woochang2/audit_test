@@ -1,16 +1,16 @@
 {
     "key": {
-        "name": "helloaws",
+        "name": "aws",
         "path": "/home/user/.ssh/aws"
     },
     "port": 5000,
     "repo": {
         "name": "audit_test",
         "url": "https://github.com/woochang2/audit_test.git",
-        "branch": "master"
+        "branch": "main"
     },
     "instances": {
         "type": "m5d.xlarge",
-        "regions": ["ap-northeast-2"]
+        "regions": ["us-east-1"]
     }
 }
